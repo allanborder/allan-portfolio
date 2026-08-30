@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -7,7 +7,7 @@
   <meta name="description" content="Allan Paulraj — Software Developer & AI/ML Engineer. Building intelligent systems worth shipping."/>
   <meta property="og:title" content="Allan Paulraj"/>
   <meta property="og:description" content="Software Developer & AI/ML Engineer — Karunya University"/>
-  <meta property="og:image" content="profile.jpg"/>
+  <meta property="og:image" content="assets/profile/profile.jpg"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -118,6 +118,356 @@
     .section-flow-rule{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:0;}
 
     /* ─── PROJECTS ─── */
+
+    /* ─── CLEAN 2-COLUMN PROJECT SHOWCASE GRID ─── */
+    .projects-showcase-grid {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .showcase-card {
+      position: relative;
+      height: 440px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0d0d0f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      cursor: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1), border-color .3s;
+    }
+    .showcase-card.pc-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .showcase-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .showcase-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+    .showcase-card:hover .showcase-bg-img {
+      transform: scale(1.035);
+    }
+    .showcase-top-bar {
+      position: relative;
+      z-index: 3;
+      padding: 20px 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .showcase-top-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .showcase-num-pill {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .showcase-badge-pill {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-arrow-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      transition: background .2s, color .2s, transform .25s;
+    }
+    .showcase-card:hover .showcase-arrow-btn {
+      background: #fff;
+      color: #000;
+      transform: rotate(45deg);
+    }
+    .showcase-hover-bar {
+      position: relative;
+      z-index: 3;
+      padding: 0 22px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    .showcase-card:hover .showcase-hover-bar {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .showcase-hover-pill {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #000;
+      background: #fff;
+      padding: 9px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-tech-hint {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
+      .projects-showcase-grid {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 24px;
+      }
+      .showcase-card {
+        height: 360px;
+      }
+      .showcase-hover-bar {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* ─── 2-COLUMN PROJECT SHOWCASE GRID (Reference Style) ─── */
+    .projects-showcase-grid {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .showcase-card {
+      position: relative;
+      height: 480px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #111113;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      cursor: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(32px);
+      transition: transform .5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .5s cubic-bezier(0.16, 1, 0.3, 1), border-color .35s;
+    }
+    .showcase-card.pc-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .showcase-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 32px 70px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.12);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .showcase-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transition: transform .7s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+    .showcase-card:hover .showcase-bg-img {
+      transform: scale(1.04);
+    }
+    .showcase-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(12,12,12,0.45) 0%, rgba(12,12,12,0.1) 30%, rgba(12,12,12,0.65) 65%, rgba(12,12,12,0.95) 100%);
+      z-index: 2;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+    .showcase-card:hover .showcase-gradient-overlay {
+      background: linear-gradient(180deg, rgba(12,12,12,0.5) 0%, rgba(12,12,12,0.15) 25%, rgba(12,12,12,0.72) 60%, rgba(12,12,12,0.98) 100%);
+    }
+    
+    .showcase-top-bar {
+      position: relative;
+      z-index: 3;
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .showcase-top-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .showcase-num-pill {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.95);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
+    .showcase-badge-pill {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-arrow-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      transition: background .25s, color .25s, transform .3s;
+    }
+    .showcase-card:hover .showcase-arrow-btn {
+      background: #fff;
+      color: #000;
+      transform: rotate(45deg);
+    }
+    
+    .showcase-hover-bar {
+      position: relative;
+      z-index: 3;
+      padding: 0 22px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+    }
+    .showcase-card:hover .showcase-hover-bar {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .showcase-hover-pill {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #000;
+      background: #fff;
+      padding: 9px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-tech-hint {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 960px) {
+      .projects-showcase-grid {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 24px;
+      }
+      .showcase-card {
+        height: 420px;
+      }
+    }
+
     #works{background:var(--bg);padding:120px 0 80px;}
     #works-overlay{position:fixed;inset:0;background:#0a0a0a;z-index:9500;transform:scaleY(0);transform-origin:bottom;pointer-events:none;}
     .page-section{transition:opacity .1s;}
@@ -339,22 +689,7 @@
     .exp-link{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:700;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:7px 14px;border-radius:999px;text-decoration:none;margin-top:12px;transition:background .2s,transform .2s;}
     .exp-link:hover{background:var(--surface-hv);transform:translateY(-1px);}
 
-    /* ─── TERMINAL ─── */
-    #terminal-section{padding:100px 48px;max-width:1400px;margin:0 auto;}
-    .terminal-wrap{background:#0d0d0d;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.22);opacity:0;}
-    .t-header{background:#1a1a1a;padding:13px 18px;display:flex;align-items:center;gap:7px;}
-    .t-dot{width:12px;height:12px;border-radius:50%;}
-    .t-dot.r{background:#ff5f56}.t-dot.y{background:#ffbd2e}.t-dot.g{background:#27c93f}
-    .t-bar-title{font-family:var(--mono);font-size:.76rem;color:#555;margin-left:8px;}
-    .t-body{padding:24px 28px;min-height:300px;font-family:var(--mono);font-size:.85rem;}
-    .t-line{color:#e0e0e0;margin-bottom:4px;line-height:1.7;}
-    .t-p{color:#27c93f}.t-c{color:#79c0ff}.t-o{color:#aaa;padding-left:14px;}
-    .t-k{color:#f78166}.t-v{color:#e3b341}.t-lnk{color:#79c0ff;text-decoration:underline;cursor:pointer;}
-    .t-blink{display:inline-block;width:7px;height:13px;background:#27c93f;vertical-align:middle;animation:blink .8s step-end infinite}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    .t-input-row{display:flex;align-items:center;gap:8px;border-top:1px solid #222;padding:14px 28px;background:#0a0a0a}
-    .t-input-p{color:#27c93f;font-family:var(--mono);font-size:.85rem;white-space:nowrap}
-    .t-input{flex:1;background:transparent;border:none;outline:none;color:#e0e0e0;font-family:var(--mono);font-size:.85rem;caret-color:#27c93f;cursor:none}
+    
 
     /* ─── CERTIFICATES ─── */
     #certs{padding:100px 48px;overflow:hidden;}
@@ -577,7 +912,7 @@
     }
     @media(max-width:700px){
       .nav-links{display:none;}.nav-ham{display:flex;}.nav-inner{padding:0 24px;}
-      #manifesto,#impact,#terminal-section,#certs{padding:80px 24px;}
+      #manifesto,#impact,#certs{padding:80px 24px;}
       #experience{padding:60px 16px;overflow:hidden;}
       .exp-table,.exp-table tbody,.exp-table tr,.exp-table td{display:block;width:100%;}
       .exp-table tr{padding:24px 0;border-bottom:1px solid var(--border);}
@@ -610,9 +945,7 @@
       .img-card{flex:0 0 260px;height:190px;}
     }
 
-    /* IMAGE TRAIL */
-    .trail-img{position:fixed;pointer-events:none;z-index:1;will-change:transform,opacity;transform-origin:center center;border-radius:8px;overflow:hidden;box-shadow:0 2px 0 rgba(255,255,255,.55) inset,0 20px 60px rgba(0,0,0,.20),0 6px 20px rgba(0,0,0,.10);backface-visibility:hidden;}
-    .trail-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none;}
+    
   </style>
 </head>
 <body>
@@ -639,7 +972,7 @@
       <li><a href="javascript:void(0)" id="nav-contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="Allan_Resume_2026.pdf" target="_blank" class="nav-cta">Resume →</a>
+      <a href="assets/documents/Allan_Resume_2026.pdf" target="_blank" class="nav-cta">Resume →</a>
       <div class="nav-ham" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -651,7 +984,7 @@
   <a href="javascript:void(0)" onclick="closeMob();showAbout();">About</a>
   <a href="javascript:void(0)" onclick="closeMob();showAbout();setTimeout(function(){var el=document.getElementById('exp-timeline');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},450);return false;">Experience</a>
   <a href="javascript:void(0)" onclick="closeMob();showContact();">Contact</a>
-  <a href="Allan_Resume_2026.pdf" target="_blank">Resume ↗</a>
+  <a href="assets/documents/Allan_Resume_2026.pdf" target="_blank">Resume ↗</a>
 </div>
 
 <div id="view-main">
@@ -669,7 +1002,7 @@
         </div>
         <div class="hero-photo-outer" id="heroPhotoOuter">
           <div class="hero-photo-wrap" id="heroPhotoWrap">
-            <img src="profile.jpg" alt="Allan Paulraj" id="heroImg" loading="eager"
+            <img src="assets/profile/profile.jpg" alt="Allan Paulraj" id="heroImg" loading="eager"
               onerror="this.style.display='none';document.getElementById('heroInitials').style.display='flex';"/>
             <div id="heroInitials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:var(--serif);font-size:3.5rem;font-weight:900;color:rgba(0,0,0,.15);">AP</div>
             <div class="hero-photo-ring"></div>
@@ -727,280 +1060,101 @@
         <p style="font-size:.9rem;color:var(--text-muted);max-width:340px;line-height:1.65;">From autonomous voice AI to medical computer vision and distributed systems — built from scratch.</p>
       </div>
 
-      <div class="featured-projects-list">
+                        <div class="projects-showcase-grid">
 
         <!-- 01 / RJ — PERSONAL AI ASSISTANT -->
-        <article class="feat-project-row" data-project="rj">
-          <div class="feat-proj-visual open-case" data-project="rj">
-            <img class="feat-proj-img" src="rj_hud.jpg" alt="RJ Personal AI Assistant" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">🎙️</div>
-              <div class="feat-proj-fallback-text">RJ Personal AI HUD</div>
+        <article class="showcase-card open-case" data-project="rj" title="Click to view RJ case study">
+          <img class="showcase-bg-img" src="assets/projects/rj_showcase.png" alt="RJ Personal AI Assistant" onerror="this.src='assets/projects/rj_hud.jpg';" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">01</span>
+              <span class="showcase-badge-pill"><span class="green-dot" style="width:5px;height:5px;"></span> Core Built</span>
             </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">01</div>
-            <div class="feat-proj-status-badge"><span class="green-dot" style="width:6px;height:6px;"></span> Core System Built</div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">Voice AI · System Automation · Active Dev</div>
-            <h3 class="feat-proj-title">RJ — Personal AI Assistant</h3>
-            <p class="feat-proj-tagline">RJ is my personal AI assistant built to interact with my system through voice, automate everyday tasks, maintain persistent memory, and provide an always-on intelligent interface.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> System Flow</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">Wake Word / Voice</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Local Speech Engine</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Groq LLM Streaming</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">PC Automation / TTS</span>
-              </div>
-            </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Built the low-latency wake-word pipeline, WebSocket streaming HUD, TTS audio caching, persistent SQLite context store, and OS automation scripts.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">Python</span>
-              <span class="feat-proj-tag">Groq API</span>
-              <span class="feat-proj-tag">FastAPI &amp; WebSockets</span>
-              <span class="feat-proj-tag">PyAudio / TTS</span>
-              <span class="feat-proj-tag">OS Automation</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="rj">View Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">Python · Groq · WebSockets</span>
           </div>
         </article>
 
         <!-- 02 / SMARTPARK -->
-        <article class="feat-project-row row-reverse" data-project="smartpark">
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">Full-Stack · Real-Time IoT / Web App</div>
-            <h3 class="feat-proj-title">SmartPark</h3>
-            <p class="feat-proj-tagline">Real-time multi-floor parking management platform with algorithmic dynamic pricing, automated GST billing, and live occupancy synchronization.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> System Flow</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">Attendant UI</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Express REST Router</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Dynamic Tariff Engine</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">SQLite Database</span>
-              </div>
+        <article class="showcase-card open-case" data-project="smartpark" title="Click to view SmartPark case study">
+          <img class="showcase-bg-img" src="assets/projects/smartpark_showcase.png" alt="SmartPark Real-Time Parking" onerror="this.src='assets/projects/smartpark_cover.png';" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">02</span>
+              <span class="showcase-badge-pill"><span class="green-dot" style="width:5px;height:5px;"></span> Completed</span>
             </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Architected the entire MVC backend in Node.js, real-time floor coordination logic, automated GST invoice PDF generation, and Chart.js analytics.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">Node.js</span>
-              <span class="feat-proj-tag">Express.js</span>
-              <span class="feat-proj-tag">SQLite</span>
-              <span class="feat-proj-tag">Chart.js</span>
-              <span class="feat-proj-tag">REST API</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="smartpark">View Case Study <i class="fas fa-arrow-right"></i></a>
-              <a href="https://github.com/allanborder" target="_blank" class="feat-proj-btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-visual open-case" data-project="smartpark">
-            <img class="feat-proj-img" src="smartpark_cover.png" alt="SmartPark Real-Time Dashboard" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">🅿️</div>
-              <div class="feat-proj-fallback-text">SmartPark Dashboard</div>
-            </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">02</div>
-            <div class="feat-proj-status-badge"><span class="green-dot" style="width:6px;height:6px;"></span> Completed</div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">Node.js · SQLite · Tariff Engine</span>
           </div>
         </article>
 
         <!-- 03 / NEUROAI -->
-        <article class="feat-project-row" data-project="neuroai">
-          <div class="feat-proj-visual open-case" data-project="neuroai">
-            <img class="feat-proj-img" src="neuroai_dash.jpg" alt="NeuroAI Medical Imaging System" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">🧠</div>
-              <div class="feat-proj-fallback-text">NeuroAI Medical CV</div>
+        <article class="showcase-card open-case" data-project="neuroai" title="Click to view NeuroAI case study">
+          <img class="showcase-bg-img" src="assets/projects/neuroai_showcase.png" alt="NeuroAI Medical CV" onerror="this.src='assets/projects/neuroai_dash.jpg';" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">03</span>
+              <span class="showcase-badge-pill"><span class="green-dot" style="width:5px;height:5px;"></span> 97%+ Accuracy</span>
             </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">03</div>
-            <div class="feat-proj-status-badge"><span class="green-dot" style="width:6px;height:6px;"></span> 97%+ Accuracy</div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">Computer Vision · Medical AI · Local LLM</div>
-            <h3 class="feat-proj-title">NeuroAI</h3>
-            <p class="feat-proj-tagline">Brain MRI classification platform diagnosing four tumor categories using EfficientNetB0, paired with an on-device Mistral 7B LLM for clinical report synthesis.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> System Flow</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">MRI Scan Upload</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">FastAPI Async API</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">EfficientNetB0 (CV)</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Mistral 7B (Ollama)</span>
-              </div>
-            </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Fine-tuned EfficientNetB0 weights, configured image tensor augmentation pipelines, and integrated asynchronous local LLM diagnostic prompt handlers.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">TensorFlow</span>
-              <span class="feat-proj-tag">EfficientNetB0</span>
-              <span class="feat-proj-tag">FastAPI</span>
-              <span class="feat-proj-tag">Ollama &amp; Mistral</span>
-              <span class="feat-proj-tag">React</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="neuroai">View Case Study <i class="fas fa-arrow-right"></i></a>
-              <a href="https://github.com/allanborder" target="_blank" class="feat-proj-btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">EfficientNetB0 · Mistral 7B</span>
           </div>
         </article>
 
         <!-- 04 / BODYBLUEPRINT PRO -->
-        <article class="feat-project-row row-reverse" data-project="bodybp">
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">React SPA · AI Coaching · Live on Vercel</div>
-            <h3 class="feat-proj-title">BodyBlueprint Pro</h3>
-            <p class="feat-proj-tagline">Privacy-first fitness progression platform featuring timeline data visualization, automatic personal record detection, and Groq-powered AI workout coaching.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> System Flow</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">Workout Entry</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Recharts Viz Engine</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">PR Calculation Algorithm</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Llama 3.3 Guidance</span>
-              </div>
+        <article class="showcase-card open-case" data-project="bodybp" title="Click to view BodyBlueprint case study">
+          <img class="showcase-bg-img" src="assets/projects/bodybp_showcase.png" alt="BodyBlueprint AI Fitness" onerror="this.src='assets/projects/bodybp_dash.jpg';" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">04</span>
+              <span class="showcase-badge-pill"><span class="green-dot" style="width:5px;height:5px;"></span> Live Deployed</span>
             </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Developed the modular React state layer with 100% client persistence in LocalStorage, chart rendering hooks, and AI advisory endpoints.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">React</span>
-              <span class="feat-proj-tag">Vite</span>
-              <span class="feat-proj-tag">Recharts</span>
-              <span class="feat-proj-tag">Groq API</span>
-              <span class="feat-proj-tag">Vercel CDN</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="bodybp">View Case Study <i class="fas fa-arrow-right"></i></a>
-              <a href="https://body-blueprint-2.vercel.app/" target="_blank" class="feat-proj-btn-ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            </div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-visual open-case" data-project="bodybp">
-            <img class="feat-proj-img" src="bodybp_dash.jpg" alt="BodyBlueprint Pro Fitness App" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">💪</div>
-              <div class="feat-proj-fallback-text">BodyBlueprint Pro</div>
-            </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">04</div>
-            <div class="feat-proj-status-badge"><span class="green-dot" style="width:6px;height:6px;"></span> Live Deployed</div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">React · Groq API · Vercel</span>
           </div>
         </article>
 
         <!-- 05 / DERMASENSE -->
-        <article class="feat-project-row" data-project="dermasense">
-          <div class="feat-proj-visual open-case" data-project="dermasense">
-            <img class="feat-proj-img" src="aiml-ten_llm_dash.png" alt="DermaSense AI Diagnostics" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">🔬</div>
-              <div class="feat-proj-fallback-text">DermaSense Diagnostics</div>
+        <article class="showcase-card open-case" data-project="dermasense" title="Click to view DermaSense case study">
+          <img class="showcase-bg-img" src="assets/projects/aiml-ten_llm_dash.png" alt="DermaSense AI Diagnostics" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">05</span>
+              <span class="showcase-badge-pill">◐ In Development</span>
             </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">05</div>
-            <div class="feat-proj-status-badge">◐ In Development</div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">Dermatology AI · Deep Learning · In Development</div>
-            <h3 class="feat-proj-title">DermaSense</h3>
-            <p class="feat-proj-tagline">AI-assisted dermatological analysis pipeline for non-invasive skin lesion screening and risk stratification through deep neural networks.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> System Flow</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">Dermoscopic Image</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Pre-Processing &amp; Normalization</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">CNN Feature Extraction</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Risk Assessment Output</span>
-              </div>
-            </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Structuring the deep learning transfer learning model architecture, dataset augmentation routines, and clinical guidance score algorithms.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">Deep Learning</span>
-              <span class="feat-proj-tag">Python</span>
-              <span class="feat-proj-tag">PyTorch / TensorFlow</span>
-              <span class="feat-proj-tag">Computer Vision</span>
-              <span class="feat-proj-tag">FastAPI</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="dermasense">View Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">Deep Learning · PyTorch · FastAPI</span>
           </div>
         </article>
 
-        <!-- 06 / PATCHWISE (NEXORA HACKATHON) -->
-        <article class="feat-project-row row-reverse" data-project="nexora">
-          <div class="feat-proj-info">
-            <div class="feat-proj-kicker">Nexora Hackathon Finalist · Cybersecurity AI · Live on Vercel</div>
-            <h3 class="feat-proj-title">Patchwise</h3>
-            <p class="feat-proj-tagline">AI-powered vulnerability triage platform that prioritises security flaws using business context — combining CVSS, EPSS, CISA KEV, and service criticality into an explainable 0–100 risk score.</p>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-microchip"></i> Scoring Pipeline</div>
-              <div class="feat-proj-flow">
-                <span class="feat-flow-step">CVSS + EPSS Signals</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">CISA KEV Check</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Org Context Engine</span>
-                <span class="feat-flow-arrow">→</span>
-                <span class="feat-flow-step">Priority Score (0–100)</span>
-              </div>
+        <!-- 06 / PATCHWISE -->
+        <article class="showcase-card open-case" data-project="nexora" title="Click to view Patchwise case study">
+          <img class="showcase-bg-img" src="assets/projects/patchwise_showcase.png" alt="Patchwise AI Cybersecurity" onerror="this.src='assets/projects/patchwise_dash.jpg';" loading="lazy"/>
+          <div class="showcase-top-bar">
+            <div class="showcase-top-left">
+              <span class="showcase-num-pill">06</span>
+              <span class="showcase-badge-pill"><span class="green-dot" style="width:5px;height:5px;"></span> Hackathon Finalist</span>
             </div>
-            <div class="feat-proj-block">
-              <div class="feat-proj-block-label"><i class="fas fa-user-gear"></i> What I Personally Engineered</div>
-              <p class="feat-proj-block-text">Built the deterministic multi-signal scoring engine, CISA KEV integration, AI-powered vulnerability explanation layer, and organisation-aware risk prioritisation — all under 24h sprint conditions.</p>
-            </div>
-            <div class="feat-proj-tags">
-              <span class="feat-proj-tag">Python</span>
-              <span class="feat-proj-tag">React + Vite</span>
-              <span class="feat-proj-tag">CVSS / EPSS</span>
-              <span class="feat-proj-tag">CISA KEV API</span>
-              <span class="feat-proj-tag">AI Explanations</span>
-            </div>
-            <div class="feat-proj-actions">
-              <a href="javascript:void(0)" class="feat-proj-btn open-case" data-project="nexora">View Case Study <i class="fas fa-arrow-right"></i></a>
-              <a href="https://patchwise.vercel.app/" target="_blank" class="feat-proj-btn-ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-              <a href="https://github.com/allanborder/PatchWise" target="_blank" class="feat-proj-btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+            <div class="showcase-arrow-btn"><i class="fas fa-arrow-right"></i></div>
           </div>
-          <div class="feat-proj-visual open-case" data-project="nexora">
-            <img class="feat-proj-img" src="patchwise_dash.jpg" alt="Patchwise AI System" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
-            <div class="feat-proj-fallback" style="display:none;">
-              <div class="feat-proj-fallback-icon">⚡</div>
-              <div class="feat-proj-fallback-text">Nexora Hackathon Build</div>
-            </div>
-            <div class="feat-proj-overlay"><div class="feat-proj-pill">Explore Case Study</div></div>
-            <div class="feat-proj-num-badge">06</div>
-            <div class="feat-proj-status-badge"><span class="green-dot" style="width:6px;height:6px;"></span> Hackathon Finalist</div>
+          <div class="showcase-hover-bar">
+            <span class="showcase-hover-pill">Explore Case Study <i class="fas fa-arrow-right" style="font-size:0.68rem;"></i></span>
+            <span class="showcase-tech-hint">CISA KEV · CVSS · React</span>
           </div>
         </article>
 
@@ -1098,26 +1252,7 @@
 
     <div class="section-flow-rule"></div>
 
-    <section id="terminal-section" class="page-section">
-      <div class="section-eyebrow">Say Hello</div>
-      <h2 class="section-title"><span class="tl"><span class="tli">Interactive</span></span><span class="tl"><span class="tli">Terminal</span></span></h2>
-      <p class="section-sub">Click the terminal below to start typing.</p>
-      <div class="terminal-wrap" id="terminalWrap">
-        <div class="t-header">
-          <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
-          <span class="t-bar-title">allan@portfolio ~ $</span>
-        </div>
-        <div class="t-body" id="termBody">
-          <div class="t-line"><span class="t-p">allan@portfolio</span> <span class="t-c">~ $</span> <span id="typeTarget"></span><span class="t-blink"></span></div>
-        </div>
-        <div class="t-input-row">
-          <span class="t-input-p">allan@portfolio ~ $&nbsp;</span>
-          <input class="t-input" id="termInput" placeholder="type a command..." autocomplete="off" spellcheck="false"/>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-flow-rule"></div>
+    
 
     <section id="certs" class="page-section">
       <div class="section-eyebrow">Credentials</div>
@@ -1218,10 +1353,10 @@
       <div class="exp-date-col"><div class="exp-date">Jun – Aug<br>2025</div></div>
       <div class="exp-line-col"><div class="exp-line-dot"></div></div>
       <div class="exp-content-col">
-        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew1"><img src="image_f2e263.png" alt="Fuzionest" onerror="document.getElementById('ew1').outerHTML='<div class=\'exp-logo-ph-lg\'>F</div>';"></div><div><div class="exp-co-name">Fuzionest</div><div class="exp-co-role">Software Developer Intern</div></div></div>
+        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew1"><img src="assets/logos/image_f2e263.png" alt="Fuzionest" onerror="document.getElementById('ew1').outerHTML='<div class=\'exp-logo-ph-lg\'>F</div>';"></div><div><div class="exp-co-name">Fuzionest</div><div class="exp-co-role">Software Developer Intern</div></div></div>
         <p class="exp-desc">Maintained analytical paradigms and programming outputs inside team pipelines. Delivered data processing modules under active industrial deadlines.</p>
         <div class="exp-chips-lg"><span class="exp-chip-lg">Data Engineering</span><span class="exp-chip-lg">Python</span><span class="exp-chip-lg">System Analytics</span></div>
-        <a href="URK24CS7129-ALLANPAULRAJV.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Certificate</a>
+        <a href="assets/documents/URK24CS7129-ALLANPAULRAJV.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Certificate</a>
       </div>
     </div>
     <div class="exp-entry" id="expE2">
@@ -1237,20 +1372,20 @@
       <div class="exp-date-col"><div class="exp-date">Jun – Aug<br>2026</div><div class="exp-status"><div class="exp-status-dot"></div>Current</div></div>
       <div class="exp-line-col"><div class="exp-line-dot"></div></div>
       <div class="exp-content-col">
-        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew3"><img src="lysa_logo.png" alt="Lysa Solutions" onerror="document.getElementById('ew3').outerHTML='<div class=\'exp-logo-ph-lg\'>L</div>';"></div><div><div class="exp-co-name">Lysa Solutions</div><div class="exp-co-role">Full Stack Developer Intern</div></div></div>
+        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew3"><img src="assets/logos/lysa_logo.png" alt="Lysa Solutions" onerror="document.getElementById('ew3').outerHTML='<div class=\'exp-logo-ph-lg\'>L</div>';"></div><div><div class="exp-co-name">Lysa Solutions</div><div class="exp-co-role">Full Stack Developer Intern</div></div></div>
         <p class="exp-desc">Engineered backend logic, deployed responsive components, maintained collaborative on-site codebases during a 3-month offline deployment in Coimbatore.</p>
         <div class="exp-chips-lg"><span class="exp-chip-lg">Full-Stack</span><span class="exp-chip-lg">Backend Engineering</span><span class="exp-chip-lg">3 Months · On-Site</span></div>
-        <a href="Allan_Paulraj_offer_letter.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Offer Letter</a>
+        <a href="assets/documents/Allan_Paulraj_offer_letter.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Offer Letter</a>
       </div>
     </div>
     <div class="exp-entry" id="expE4">
       <div class="exp-date-col"><div class="exp-date">Jun<br>2026</div><div class="exp-status"><div class="exp-status-dot"></div>Current</div></div>
       <div class="exp-line-col"><div class="exp-line-dot"></div></div>
       <div class="exp-content-col">
-        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew4"><img src="oasis_logo.png" alt="Oasis Infobyte" onerror="document.getElementById('ew4').outerHTML='<div class=\'exp-logo-ph-lg\'>O</div>';"></div><div><div class="exp-co-name">Oasis Infobyte</div><div class="exp-co-role">Data Science Intern</div></div></div>
+        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew4"><img src="assets/logos/oasis_logo.png" alt="Oasis Infobyte" onerror="document.getElementById('ew4').outerHTML='<div class=\'exp-logo-ph-lg\'>O</div>';"></div><div><div class="exp-co-name">Oasis Infobyte</div><div class="exp-co-role">Data Science Intern</div></div></div>
         <p class="exp-desc">Fellowship-based data science internship with hands-on application of data analysis, machine learning concepts, and practical skill-building in an industrial context.</p>
         <div class="exp-chips-lg"><span class="exp-chip-lg">Data Science</span><span class="exp-chip-lg">Machine Learning</span><span class="exp-chip-lg">Python</span><span class="exp-chip-lg">1 Month · Fellowship</span></div>
-        <a href="oasis_offer_letter.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Offer Letter</a>
+        <a href="assets/documents/oasis_offer_letter.pdf" target="_blank" class="exp-cert-link"><i class="fas fa-file-pdf"></i> View Offer Letter</a>
       </div>
     </div>
   </section>
@@ -1316,7 +1451,7 @@
         <a href="mailto:allanpaulraj2020@gmail.com" class="ac-tile"><i class="ac-icon fas fa-envelope"></i><div class="ac-label">Email</div><div class="ac-value">allanpaulraj2020<br>@gmail.com</div><i class="ac-arrow fas fa-arrow-right"></i></a>
         <a href="https://github.com/allanborder" target="_blank" class="ac-tile"><i class="ac-icon fab fa-github"></i><div class="ac-label">GitHub</div><div class="ac-value">github.com/<br>allanborder</div><i class="ac-arrow fas fa-arrow-right"></i></a>
         <a href="https://www.linkedin.com/in/allaneyyyy28" target="_blank" class="ac-tile"><i class="ac-icon fab fa-linkedin"></i><div class="ac-label">LinkedIn</div><div class="ac-value">linkedin.com/in/<br>allaneyyyy28</div><i class="ac-arrow fas fa-arrow-right"></i></a>
-        <a href="Allan_Resume_2026.pdf" target="_blank" class="ac-tile"><i class="ac-icon fas fa-file-alt"></i><div class="ac-label">Resume</div><div class="ac-value">Allan_Resume<br>_2026.pdf</div><i class="ac-arrow fas fa-arrow-right"></i></a>
+        <a href="assets/documents/Allan_Resume_2026.pdf" target="_blank" class="ac-tile"><i class="ac-icon fas fa-file-alt"></i><div class="ac-label">Resume</div><div class="ac-value">Allan_Resume<br>_2026.pdf</div><i class="ac-arrow fas fa-arrow-right"></i></a>
       </div>
       <div class="ac-footer-row" id="acFooterRow">
         <span class="ac-footer-text">© 2026 Allan Paulraj · Built from scratch</span>
@@ -1369,21 +1504,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── About Image Marquee ─── */
 var IMG_CARDS=[
-  {src:'new_photo_5.jpg',caption:'Allan Paulraj'},
-  {src:'new_photo_2.jpg',caption:'Focused Building'},
-  {src:'new_photo_3.jpg',caption:'Problem Solving'},
-  {src:'new_photo_4.jpg',caption:'Training & Discipline'},
-  {src:'new_photo_1.jpg',caption:'Fitness Journey'},
-  {src:'photo_1.jpg',caption:'Allan'},
-  {src:'photo_2.jpg',caption:'Moments'},
-  {src:'photo_3.jpg',caption:'Campus Life'},
-  {src:'photo_4.jpg',caption:'Explorer'},
-  {src:'photo_5.jpg',caption:'Karunya'},
-  {src:'photo_6.jpg',caption:'Allan'},
-  {src:'photo_7.jpg',caption:'Story'},
-  {src:'photo_8.jpg',caption:'Visuals'},
-  {src:'photo_9.jpg',caption:'Perspective'},
-  {src:'photo_10.jpg',caption:'Gallery'}
+  {src:'assets/gallery/new_photo_5.jpg',caption:'Allan Paulraj'},
+  {src:'assets/gallery/new_photo_2.jpg',caption:'Focused Building'},
+  {src:'assets/gallery/new_photo_3.jpg',caption:'Problem Solving'},
+  {src:'assets/gallery/new_photo_4.jpg',caption:'Training & Discipline'},
+  {src:'assets/gallery/new_photo_1.jpg',caption:'Fitness Journey'},
+  {src:'assets/gallery/photo_1.jpg',caption:'Allan'},
+  {src:'assets/gallery/photo_2.jpg',caption:'Moments'},
+  {src:'assets/gallery/photo_3.jpg',caption:'Campus Life'},
+  {src:'assets/gallery/photo_4.jpg',caption:'Explorer'},
+  {src:'assets/gallery/photo_5.jpg',caption:'Karunya'},
+  {src:'assets/gallery/photo_6.jpg',caption:'Allan'},
+  {src:'assets/gallery/photo_7.jpg',caption:'Story'},
+  {src:'assets/gallery/photo_8.jpg',caption:'Visuals'},
+  {src:'assets/gallery/photo_9.jpg',caption:'Perspective'},
+  {src:'assets/gallery/photo_10.jpg',caption:'Gallery'}
 ];
 function buildImgCard(card){var div=document.createElement('div');div.className='img-card';var img=document.createElement('img');img.src=card.src;img.alt=card.caption;img.loading='lazy';var ph=document.createElement('div');ph.className='img-card-ph';ph.innerHTML='<span class="img-card-ph-icon">📸</span><span class="img-card-ph-label">'+card.src.replace('.jpg','')+'</span>';ph.style.display='none';img.onerror=function(){this.style.display='none';ph.style.display='flex';};var cap=document.createElement('div');cap.className='img-card-caption';cap.textContent=card.src.replace('.jpg','');div.appendChild(img);div.appendChild(ph);div.appendChild(cap);return div;}
 var track=document.getElementById('imgMarqueeTrack');
@@ -1401,7 +1536,7 @@ var PROJECTS={
   rj:{
     num:'01',badge:'Voice AI · Personal Assistant · Core System Built',title:'RJ — Personal AI Assistant',
     heroDesc:'RJ is my personal AI assistant built to interact with my system through voice, automate everyday tasks, maintain persistent memory, and provide an always-on intelligent interface.',
-    coverImage:'rj_hud.jpg',coverBg:'linear-gradient(140deg,#111318,#20242c)',coverIcon:'🎙️',
+    coverImage:'assets/projects/rj_showcase.png',coverBg:'linear-gradient(140deg,#111318,#20242c)',coverIcon:'🎙️',
     meta:[{k:'Type',v:'Personal Voice AI System'},{k:'Status',v:'Core System Built · Active Dev'},{k:'Stack',v:'Python + Groq + WebSockets'},{k:'Interface',v:'Voice & Live HUD'}],
     metrics:[{n:'Always-On',l:'Background Daemon'},{n:'<300ms',l:'Voice Stream Latency'},{n:'100%',l:'PC Automation'},{n:'Persistent',l:'Memory & Context'}],
     sections:[
@@ -1418,7 +1553,7 @@ var PROJECTS={
   smartpark:{
     num:'02',badge:'Full-Stack · Web App · 2025',title:'SmartPark',
     heroDesc:'A real-time parking management platform handling multi-floor capacity, dynamic pricing algorithms, and automated GST billing — built from scratch with Node.js and Express.',
-    coverImage:'smartpark_cover.png',coverBg:'linear-gradient(140deg,#0A1628,#1A2B4A)',coverIcon:'🅿️',
+    coverImage:'assets/projects/smartpark_showcase.png',coverBg:'linear-gradient(140deg,#0A1628,#1A2B4A)',coverIcon:'🅿️',
     meta:[{k:'Type',v:'Full-Stack Web App'},{k:'Year',v:'2025'},{k:'Stack',v:'Node.js + SQLite'},{k:'Status',v:'Completed'}],
     metrics:[{n:'3',l:'Floors Managed'},{n:'<1s',l:'API Response'},{n:'0',l:'External DBs'},{n:'100%',l:'Real-Time'}],
     sections:[
@@ -1435,7 +1570,7 @@ var PROJECTS={
   neuroai:{
     num:'03',badge:'Computer Vision · AI/ML · 2025',title:'NeuroAI',
     heroDesc:'An AI-powered medical imaging platform classifying brain MRI scans into four tumor categories using EfficientNetB0, then generating natural-language diagnostic reports via a local Mistral LLM.',
-    coverImage:'neuroai_dash.jpg',coverBg:'linear-gradient(140deg,#1A1A2E,#2D2D4A)',coverIcon:'🧠',
+    coverImage:'assets/projects/neuroai_showcase.png',coverBg:'linear-gradient(140deg,#1A1A2E,#2D2D4A)',coverIcon:'🧠',
     meta:[{k:'Type',v:'Medical AI System'},{k:'Year',v:'2025'},{k:'Stack',v:'TensorFlow + FastAPI'},{k:'Privacy',v:'100% Local'}],
     metrics:[{n:'97%+',l:'Accuracy'},{n:'4',l:'Tumor Classes'},{n:'0',l:'Data Sent Out'},{n:'<3s',l:'Scan to Report'}],
     sections:[
@@ -1452,7 +1587,7 @@ var PROJECTS={
   bodybp:{
     num:'04',badge:'React · Live · Vercel · 2025',title:'BodyBlueprint Pro',
     heroDesc:'A personal fitness performance tracker built in React — featuring timeline data visualization, personal record logging per exercise, AI coaching via Llama 3.3 70B, and a responsive UI deployed live on Vercel.',
-    coverImage:'bodybp_dash.jpg',coverBg:'linear-gradient(140deg,#1C2A1A,#2A3D28)',coverIcon:'💪',
+    coverImage:'assets/projects/bodybp_showcase.png',coverBg:'linear-gradient(140deg,#1C2A1A,#2A3D28)',coverIcon:'💪',
     meta:[{k:'Type',v:'React Web App'},{k:'Status',v:'Live on Vercel'},{k:'AI',v:'Llama 3.3 70B'},{k:'Privacy',v:'100% Client-Side'}],
     metrics:[{n:'Live',l:'Deployed'},{n:'14+',l:'Body Metrics'},{n:'~0ms',l:'Server Latency'},{n:'100%',l:'Privacy'}],
     sections:[
@@ -1469,7 +1604,7 @@ var PROJECTS={
   dermasense:{
     num:'05',badge:'Dermatology AI · Diagnostics · In Development',title:'DermaSense',
     heroDesc:'An AI-assisted dermatological diagnostic pipeline designed for non-invasive skin lesion classification and automated risk factor analysis using deep convolutional networks.',
-    coverImage:'aiml-ten_llm_dash.png',coverBg:'linear-gradient(140deg,#1c1b24,#282436)',coverIcon:'🔬',
+    coverImage:'assets/projects/aiml-ten_llm_dash.png',coverBg:'linear-gradient(140deg,#1c1b24,#282436)',coverIcon:'🔬',
     meta:[{k:'Type',v:'Medical AI Diagnostic System'},{k:'Status',v:'In Development · Model Training'},{k:'Stack',v:'PyTorch + FastAPI'},{k:'Focus',v:'Lesion Risk Scoring'}],
     metrics:[{n:'Active',l:'In Development'},{n:'Multi-Class',l:'Lesion Detection'},{n:'Fast',l:'Inference Target'},{n:'Local/Cloud',l:'Hybrid Architecture'}],
     sections:[
@@ -1486,7 +1621,7 @@ var PROJECTS={
   nexora:{
     num:'06',badge:'Nexora Hackathon Finalist · Cybersecurity AI · 2025',title:'Patchwise',
     heroDesc:'An AI-powered vulnerability triage and risk prioritisation platform built at the Nexora 24-Hour Hackathon. Instead of treating every vulnerability equally, PatchWise combines CVSS, EPSS, CISA KEV, internet exposure, and service criticality into an explainable 0–100 priority score — giving security teams clarity on what actually matters to their organisation.',
-    coverImage:'patchwise_dash.jpg',coverBg:'linear-gradient(140deg,#0f1923,#1a2436)',coverIcon:'🛡️',
+    coverImage:'assets/projects/patchwise_showcase.png',coverBg:'linear-gradient(140deg,#0f1923,#1a2436)',coverIcon:'🛡️',
     meta:[{k:'Type',v:'Cybersecurity AI Platform'},{k:'Year',v:'2025'},{k:'Stack',v:'React + Python'},{k:'Status',v:'Live on Vercel'}],
     metrics:[{n:'0–100',l:'Risk Score'},{n:'5+',l:'Security Signals'},{n:'24h',l:'Hackathon Build'},{n:'Live',l:'On Vercel'}],
     sections:[
@@ -1778,7 +1913,7 @@ document.getElementById('csNextCard').addEventListener('click',function(){showCa
 
 (function(){
   var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('pc-visible');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.feat-project-row').forEach(function(el,i){el.style.transition='opacity .8s cubic-bezier(.16,1,.3,1) '+(i*.08)+'s,transform .8s cubic-bezier(.16,1,.3,1) '+(i*.08)+'s';obs.observe(el);});
+  document.querySelectorAll('.showcase-card, .feat-project-row').forEach(function(el,i){el.style.transition='opacity .8s cubic-bezier(.16,1,.3,1) '+(i*.08)+'s,transform .8s cubic-bezier(.16,1,.3,1) '+(i*.08)+'s';obs.observe(el);});
 })();
 
 /* Nav & Scroll */
@@ -1810,7 +1945,7 @@ function closeMob(){mob.classList.remove('open');}
     // Dynamic event delegation so hover states never get stuck
     if(c.classList.contains('contact-cur'))return;
     var target=e.target;
-    var openCard=target.closest('.feat-proj-visual, .cs2-next-card');
+    var openCard=target.closest('.showcase-card, .feat-proj-visual, .cs2-next-card');
     var viewCard=target.closest('.cert-card, .img-card');
     var link=target.closest('a, button, .hero-pill, .pc-tag, .feat-proj-tag, .nav-cta, .wf-btn, input, textarea');
     
@@ -1838,15 +1973,15 @@ function closeMob(){mob.classList.remove('open');}
 
 /* Certificates — hack_mind.png used for Mindkraft 2026 entry */
 var certData=[
-  {file:'hack_mind.png',ph:'🏆',issuer:'Mindkraft 2026 · National',name:'Runners-Up — Switch & Glitch IoT',date:'2026'},
-  {file:'scaler_java.png',ph:'☕',issuer:'Scaler',name:'Java – Mastering the Fundamentals',date:'Oct 2025'},
-  {file:'Screenshot 2025-06-27 160352.png',ph:'🗃️',issuer:'Scaler',name:'DBMS – Fundamentals & Concepts',date:'Apr 2026'},
-  {file:'image_f347de.png',ph:'📊',issuer:'HP LIFE Foundation',name:'Data Science and Analytics',date:'Jun 2025'},
-  {file:'image_f3475f.png',ph:'🤖',issuer:'Saylor University',name:'CS205: Building with AI',date:'Jun 2025'},
-  {file:'image_f34723.png',ph:'🔐',issuer:'Saylor University',name:'CS260: Cryptography & Network Sec',date:'Jun 2025'},
-  {file:'image_f343fd.png',ph:'🧠',issuer:'IBM',name:'AI Fundamentals',date:'Oct 2025'},
-  {file:'Screenshot 2025-06-27 160331.png',ph:'🗄️',issuer:'MongoDB',name:'Building AI Agents with MongoDB',date:'Oct 2025'},
-  {file:'image_f34b20.png',ph:'✨',issuer:'Simplilearn',name:'Introduction to Generative AI',date:'Apr 2026'},
+  {file:'assets/certificates/hack_mind.png',ph:'🏆',issuer:'Mindkraft 2026 · National',name:'Runners-Up — Switch & Glitch IoT',date:'2026'},
+  {file:'assets/certificates/scaler_java.png',ph:'☕',issuer:'Scaler',name:'Java – Mastering the Fundamentals',date:'Oct 2025'},
+  {file:'assets/certificates/Screenshot 2025-06-27 160352.png',ph:'🗃️',issuer:'Scaler',name:'DBMS – Fundamentals & Concepts',date:'Apr 2026'},
+  {file:'assets/certificates/image_f347de.png',ph:'📊',issuer:'HP LIFE Foundation',name:'Data Science and Analytics',date:'Jun 2025'},
+  {file:'assets/certificates/image_f3475f.png',ph:'🤖',issuer:'Saylor University',name:'CS205: Building with AI',date:'Jun 2025'},
+  {file:'assets/certificates/image_f34723.png',ph:'🔐',issuer:'Saylor University',name:'CS260: Cryptography & Network Sec',date:'Jun 2025'},
+  {file:'assets/certificates/image_f343fd.png',ph:'🧠',issuer:'IBM',name:'AI Fundamentals',date:'Oct 2025'},
+  {file:'assets/certificates/Screenshot 2025-06-27 160331.png',ph:'🗄️',issuer:'MongoDB',name:'Building AI Agents with MongoDB',date:'Oct 2025'},
+  {file:'assets/certificates/image_f34b20.png',ph:'✨',issuer:'Simplilearn',name:'Introduction to Generative AI',date:'Apr 2026'},
 ];
 function mkCert(c){
   var card=document.createElement('div');card.className='cert-card';
@@ -1861,19 +1996,7 @@ function mkCert(c){
 var certTrack=document.getElementById('marqueeTrack');
 if(certTrack)[...certData,...certData].forEach(function(c){certTrack.appendChild(mkCert(c));});
 
-/* Terminal */
-(function(){
-  var termBody=document.getElementById('termBody'),termInput=document.getElementById('termInput'),typeTarget=document.getElementById('typeTarget');
-  if(!termBody||!termInput)return;
-  var intro='help',i=0;
-  var ti=setInterval(function(){if(i<intro.length){typeTarget.textContent+=intro[i++];}else{clearInterval(ti);setTimeout(function(){addOutput(renderHelp());},300);}},120);
-  function addLine(html){var d=document.createElement('div');d.className='t-line';d.innerHTML=html;termBody.insertBefore(d,termBody.lastElementChild);termBody.scrollTop=termBody.scrollHeight;}
-  function addOutput(lines){lines.forEach(function(l){addLine(l);});}
-  function renderHelp(){return['<span class="t-o">Available commands:</span>','<span class="t-o">&nbsp;<span class="t-k">about</span>     — Who I am</span>','<span class="t-o">&nbsp;<span class="t-k">skills</span>    — Tech stack</span>','<span class="t-o">&nbsp;<span class="t-k">projects</span>  — What I\'ve built</span>','<span class="t-o">&nbsp;<span class="t-k">contact</span>   — Get in touch</span>','<span class="t-o">&nbsp;<span class="t-k">resume</span>    — Open resume</span>','<span class="t-o">&nbsp;<span class="t-k">clear</span>     — Clear terminal</span>'];}
-  var cmds={help:renderHelp,about:function(){return['<span class="t-o"><span class="t-k">Name:</span><span class="t-v"> Allan Paulraj V</span></span>','<span class="t-o"><span class="t-k">Age:</span><span class="t-v"> 19</span></span>','<span class="t-o"><span class="t-k">Role:</span><span class="t-v"> AI/ML Student & Full Stack Developer</span></span>','<span class="t-o"><span class="t-k">College:</span><span class="t-v"> Karunya Institute of Technology, CSE AI/ML</span></span>','<span class="t-o"><span class="t-k">Location:</span><span class="t-v"> Coimbatore, Tamil Nadu, India</span></span>'];},skills:function(){return['<span class="t-o"><span class="t-k">Languages:</span><span class="t-v"> Python · JavaScript · Java · C</span></span>','<span class="t-o"><span class="t-k">Frontend:</span><span class="t-v"> React · Tailwind · HTML/CSS</span></span>','<span class="t-o"><span class="t-k">Backend:</span><span class="t-v"> Node.js · Express · FastAPI</span></span>','<span class="t-o"><span class="t-k">AI/ML:</span><span class="t-v"> TensorFlow · EfficientNetB0 · Ollama</span></span>','<span class="t-o"><span class="t-k">Databases:</span><span class="t-v"> SQLite · MongoDB · MySQL · Firebase</span></span>'];},projects:function(){return['<span class="t-o">1. <span class="t-v">RJ</span>                — Personal AI Assistant (Voice + Automation)</span>','<span class="t-o">2. <span class="t-v">SmartPark</span>         — Real-Time Parking Platform (Node + SQLite)</span>','<span class="t-o">3. <span class="t-v">NeuroAI</span>           — Brain MRI Classification (EfficientNetB0)</span>','<span class="t-o">4. <span class="t-v">BodyBlueprint Pro</span> — Fitness &amp; PR Tracker (React + Groq)</span>','<span class="t-o">5. <span class="t-v">DermaSense</span>        — Dermatology AI Diagnostics (In Dev)</span>','<span class="t-o">6. <span class="t-v">Patchwise</span>         — Nexora Hackathon Finalist Prototype</span>'];},contact:function(){setTimeout(function(){showContact();},400);return['<span class="t-o"><span class="t-v">Opening contact page...</span></span>'];},resume:function(){setTimeout(function(){window.open('Allan_Resume_2026.pdf','_blank');},200);return['<span class="t-o"><span class="t-v">Opening resume...</span></span>'];},clear:function(){termBody.querySelectorAll('.t-line:not(:last-child)').forEach(function(l){l.remove();});return[];}};
-  termInput.addEventListener('keydown',function(e){if(e.key!=='Enter')return;var raw=termInput.value.trim().toLowerCase();termInput.value='';if(!raw)return;addLine('<span class="t-p">allan@portfolio</span> <span class="t-c">~ $</span> '+raw);cmds[raw]?addOutput(cmds[raw]()):addLine('<span class="t-o" style="color:#f78166;">command not found: '+raw+'</span>');});
-  document.getElementById('terminalWrap')&&document.getElementById('terminalWrap').addEventListener('click',function(){termInput.focus();});
-})();
+/* Terminal section removed */
 
 /* Hero GSAP */
 gsap.set('#heroNameInner',{y:'105%'});
@@ -1897,45 +2020,12 @@ document.querySelectorAll('.impact-stat,.ach-card').forEach(function(el,i){gsap.
 gsap.fromTo('.impact-cta',{opacity:0,y:40},{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:'.impact-cta',start:'top 85%',once:true}});
 document.querySelectorAll('.cnt').forEach(function(el){ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:function(){var to=parseInt(el.dataset.to),suf=el.dataset.suf||'';gsap.to({v:0},{v:to,duration:2.2,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(this.targets()[0].v)+suf;}});}});});
 document.querySelectorAll('.exp-table tr').forEach(function(r,i){gsap.fromTo(r,{opacity:0,y:28},{opacity:1,y:0,duration:.75,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:r,start:'top 88%',once:true}});});
-gsap.fromTo('.terminal-wrap',{opacity:0,y:48},{opacity:1,y:0,duration:.95,ease:'power3.out',scrollTrigger:{trigger:'.terminal-wrap',start:'top 85%',once:true}});
+
 document.querySelectorAll('.nav-cta,.wf-btn').forEach(function(btn){btn.addEventListener('mousemove',function(e){var r=this.getBoundingClientRect();gsap.to(this,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.2,duration:.3,ease:'power2.out'});});btn.addEventListener('mouseleave',function(){gsap.to(this,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'});});});
 
 window.addEventListener('hashchange',function(e){e.preventDefault();window.scrollTo(0,0);});
 
-/* ─── IMAGE TRAIL (Compact, Faster & Elegant) ─── */
-(function(){
-  if(window.matchMedia('(max-width:700px)').matches)return;
-  if('ontouchstart' in window&&!window.matchMedia('(pointer:fine)').matches)return;
-  var IMAGES=['trail_1','trail_2','trail_3','trail_4','trail_5','trail_6'];
-  var IMG_W=110,IMG_H=138,MAX_VISIBLE=7,COOLDOWN_MAX=75,COOLDOWN_MIN=20,VEL_SCALE=3.5,VEL_THRESH=2.2,LERP_VEL=0.22;
-  var zone=document.getElementById('home');if(!zone)return;
-  var imgIdx=0,activeTrails=[],lastSpawn=0,mouseX=0,mouseY=0,prevX=0,prevY=0,smoothVel=0,isHovering=false,rafId=null;
-  function lerp(a,b,t){return a+(b-a)*t;}function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}function rand(lo,hi){return lo+Math.random()*(hi-lo);}function easeOutCubic(t){return 1-Math.pow(1-t,3);}function easeInCubic(t){return t*t*t;}
-  function spawnTrail(x,y){
-    if(activeTrails.length>=MAX_VISIBLE){var oldest=activeTrails[0];if(oldest&&!oldest.dying)killTrail(oldest);}
-    var src=IMAGES[imgIdx%IMAGES.length];imgIdx++;var rotation=rand(-6,6),sz=rand(0.85,1.05),w=Math.round(IMG_W*sz),h=Math.round(IMG_H*sz);
-    var spawnX=x+rand(-10,10)-w/2,spawnY=y+rand(-14,4)-h/2;
-    var el=document.createElement('div');el.className='trail-img';el.style.cssText=['width:'+w+'px','height:'+h+'px','left:'+spawnX+'px','top:'+spawnY+'px','opacity:0','transform:rotate('+rotation+'deg) scale(0.88) translate3d(0,4px,0)','transition:none'].join(';');
-    var img=document.createElement('img');img.src=src+'.webp';img.alt='';img.loading='eager';img.onerror=function(){if(this.src.indexOf('.webp')!==-1)this.src=src+'.jpg';};el.appendChild(img);document.body.appendChild(el);
-    var trail={el:el,rotation:rotation,dying:false,animRaf:null,lifetime:rand(650,950)};activeTrails.push(trail);
-    var inDur=220,inStart=performance.now();
-    function fadeIn(now){var t=clamp((now-inStart)/inDur,0,1),e=easeOutCubic(t);el.style.opacity=String(e);el.style.transform='rotate('+rotation+'deg) scale('+(0.88+0.12*e)+') translate3d(0,'+(4-4*e)+'px,0)';if(t<1){trail.animRaf=requestAnimationFrame(fadeIn);}else{trail.animRaf=null;setTimeout(function(){if(!trail.dying)killTrail(trail);},trail.lifetime);}}
-    trail.animRaf=requestAnimationFrame(fadeIn);
-  }
-  function killTrail(trail){
-    if(trail.dying)return;trail.dying=true;var idx=activeTrails.indexOf(trail);if(idx!==-1)activeTrails.splice(idx,1);if(trail.animRaf){cancelAnimationFrame(trail.animRaf);trail.animRaf=null;}
-    var outDur=320,outStart=performance.now(),startOpacity=parseFloat(trail.el.style.opacity)||1;
-    function fadeOut(now){var t=clamp((now-outStart)/outDur,0,1),e=easeInCubic(t),drift=e*16;trail.el.style.opacity=String(startOpacity*(1-e));trail.el.style.transform='rotate('+trail.rotation+'deg) scale('+(1-0.04*e)+') translate3d(0,'+(-drift)+'px,0)';if(t<1){requestAnimationFrame(fadeOut);}else{if(trail.el.parentNode)trail.el.parentNode.removeChild(trail.el);}}
-    requestAnimationFrame(fadeOut);
-  }
-  function tick(now){if(!isHovering){activeTrails.slice().forEach(killTrail);rafId=null;return;}rafId=requestAnimationFrame(tick);var dx=mouseX-prevX,dy=mouseY-prevY;smoothVel=lerp(smoothVel,Math.sqrt(dx*dx+dy*dy),LERP_VEL);prevX=mouseX;prevY=mouseY;var cooldown=clamp(COOLDOWN_MAX-smoothVel*VEL_SCALE,COOLDOWN_MIN,COOLDOWN_MAX);if(smoothVel>VEL_THRESH&&(now-lastSpawn)>cooldown){spawnTrail(mouseX,mouseY);lastSpawn=now;}}
-  zone.addEventListener('mouseenter',function(){isHovering=true;prevX=mouseX;prevY=mouseY;smoothVel=0;if(!rafId)rafId=requestAnimationFrame(tick);});
-  zone.addEventListener('mouseleave',function(){isHovering=false;smoothVel=0;activeTrails.slice().forEach(function(t,i){setTimeout(function(){killTrail(t);},i*30);});});
-  document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY;},{passive:true});
-  function purgeAll(){isHovering=false;if(rafId){cancelAnimationFrame(rafId);rafId=null;}activeTrails.slice().forEach(function(t){if(t.animRaf)cancelAnimationFrame(t.animRaf);if(t.el&&t.el.parentNode)t.el.parentNode.removeChild(t.el);});activeTrails=[];smoothVel=0;}
-  window.trailPurge=purgeAll;
-  ['showAbout','showContact'].forEach(function(fn){if(typeof window[fn]==='function'){var orig=window[fn];window[fn]=function(){purgeAll();orig.apply(this,arguments);};}});
-})();
+/* Image trail disabled for maximum 60fps performance */
 </script>
 </body>
 </html>
