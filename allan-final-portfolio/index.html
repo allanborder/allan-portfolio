@@ -79,13 +79,20 @@
     .hero-name-inner{display:block;transform:translateY(105%);will-change:transform;}
     .hero-name .accent-dot{color:var(--text);opacity:.22;}
     .hero-photo-outer{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;gap:16px;margin:clamp(-18px,-2.5vw,-36px) 0;}
-    .hero-photo-wrap{width:clamp(148px,18vw,252px);height:clamp(178px,21.6vw,302px);border-radius:999px;overflow:hidden;background:linear-gradient(160deg,#d4d0c8,#b8b3a8);box-shadow:0 2px 0 0 rgba(255,255,255,.8) inset,0 40px 90px rgba(0,0,0,.16),0 12px 32px rgba(0,0,0,.1);opacity:0;transform:translateY(30px) scale(.96);will-change:transform,opacity;transition:box-shadow .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);position:relative;}
-    .hero-photo-wrap::after{content:'';position:absolute;inset:0;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(0,0,0,.12) 100%);pointer-events:none;z-index:2;transition:opacity .5s;}
-    .hero-photo-wrap:hover{box-shadow:0 2px 0 0 rgba(255,255,255,.8) inset,0 56px 110px rgba(0,0,0,.22),0 16px 40px rgba(0,0,0,.14);transform:translateY(-6px) scale(1.015)!important;}
-    .hero-photo-wrap:hover::after{opacity:0;}
-    .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1);}
-    .hero-photo-wrap:hover img{transform:scale(1.04);}
-    .hero-photo-ring{position:absolute;inset:-3px;border-radius:999px;border:1.5px solid rgba(12,12,12,.1);pointer-events:none;z-index:3;}
+    .hero-photo-wrap{width:clamp(162px,20vw,278px);height:clamp(198px,24vw,336px);border-radius:44% 56% 48% 52%/38% 42% 58% 62%;overflow:hidden;background:linear-gradient(160deg,#e7e1d7,#aeb8b1 48%,#6f7f78);box-shadow:0 2px 0 0 rgba(255,255,255,.9) inset,0 44px 95px rgba(0,0,0,.18),0 14px 34px rgba(0,0,0,.12);opacity:0;transform:translateY(30px) scale(.96);will-change:transform,opacity;transition:box-shadow .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1);position:relative;animation:heroFloat 5.6s ease-in-out infinite;}
+    .hero-photo-wrap::before{content:'';position:absolute;inset:-28%;background:conic-gradient(from 90deg,rgba(12,12,12,.06),rgba(63,101,92,.28),rgba(245,195,80,.28),rgba(12,12,12,.06));animation:heroAuraSpin 9s linear infinite;z-index:0;}
+    .hero-photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.04) 0%,rgba(0,0,0,.18) 100%),radial-gradient(circle at 55% 28%,rgba(255,255,255,.16),transparent 34%);pointer-events:none;z-index:2;transition:opacity .5s;}
+    .hero-photo-wrap:hover{box-shadow:0 2px 0 0 rgba(255,255,255,.9) inset,0 64px 120px rgba(0,0,0,.24),0 18px 46px rgba(0,0,0,.16);transform:translateY(-12px) scale(1.035)!important;border-radius:38% 62% 42% 58%/42% 36% 64% 58%;}
+    .hero-photo-wrap:hover::after{opacity:.55;}
+    .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:50% 19%;display:block;position:relative;z-index:1;filter:saturate(1.04) contrast(1.03);transition:transform .7s cubic-bezier(.16,1,.3,1),filter .5s;}
+    .hero-photo-wrap:hover img{transform:translateY(-5px) scale(1.075);filter:saturate(1.08) contrast(1.05);}
+    .hero-photo-ring{position:absolute;inset:-8px;border-radius:inherit;border:1.5px solid rgba(12,12,12,.11);pointer-events:none;z-index:3;}
+    .hero-photo-ring::before,.hero-photo-ring::after{content:'';position:absolute;border-radius:inherit;pointer-events:none;}
+    .hero-photo-ring::before{inset:-18px;border:1px solid rgba(63,101,92,.18);animation:heroRingPulse 3.4s ease-in-out infinite;}
+    .hero-photo-ring::after{inset:16px;border-top:1px solid rgba(255,255,255,.45);opacity:.55;}
+    @keyframes heroFloat{0%,100%{translate:0 0;}50%{translate:0 -8px;}}
+    @keyframes heroAuraSpin{to{transform:rotate(360deg);}}
+    @keyframes heroRingPulse{0%,100%{opacity:.36;transform:scale(.98);}50%{opacity:.8;transform:scale(1.04);}}
     .hero-avail-badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:999px;padding:9px 20px;font-size:.72rem;font-weight:700;color:var(--text);white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.1),0 1px 0 rgba(255,255,255,.6) inset;letter-spacing:.2px;opacity:0;transform:translateY(10px);border:1px solid rgba(12,12,12,.08);}
     .green-dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 0 2px rgba(45,191,110,.2);animation:pdot 2.2s ease-in-out infinite;flex-shrink:0;}
     @keyframes pdot{0%,100%{box-shadow:0 0 0 2px rgba(45,191,110,.2);}50%{box-shadow:0 0 0 4px rgba(45,191,110,.15),0 0 8px rgba(45,191,110,.3);}}
@@ -1002,7 +1009,7 @@
         </div>
         <div class="hero-photo-outer" id="heroPhotoOuter">
           <div class="hero-photo-wrap" id="heroPhotoWrap">
-            <img src="assets/profile/profile.jpg" alt="Allan Paulraj" id="heroImg" loading="eager"
+            <img src="assets/profile/allan_hover_character.jpeg" alt="Allan Paulraj" id="heroImg" loading="eager"
               onerror="this.style.display='none';document.getElementById('heroInitials').style.display='flex';"/>
             <div id="heroInitials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:var(--serif);font-size:3.5rem;font-weight:900;color:rgba(0,0,0,.15);">AP</div>
             <div class="hero-photo-ring"></div>
@@ -1064,7 +1071,7 @@
 
         <!-- 01 / RJ — PERSONAL AI ASSISTANT -->
         <article class="showcase-card open-case" data-project="rj" title="Click to view RJ case study">
-          <img class="showcase-bg-img" src="assets/projects/rj_showcase.png" alt="RJ Personal AI Assistant" onerror="this.src='assets/projects/rj_hud.jpg';" loading="lazy"/>
+          <img class="showcase-bg-img" src="assets/projects/rj_cover.jpg" alt="RJ Personal AI Assistant" onerror="this.src='assets/projects/rj_hud.jpg';" loading="lazy"/>
           <div class="showcase-top-bar">
             <div class="showcase-top-left">
               <span class="showcase-num-pill">01</span>
@@ -1363,7 +1370,7 @@
       <div class="exp-date-col"><div class="exp-date">Oct 2025<br>– Present</div><div class="exp-status"><div class="exp-status-dot"></div>Active</div></div>
       <div class="exp-line-col"><div class="exp-line-dot"></div></div>
       <div class="exp-content-col">
-        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew2"><img src="image_f2da29.png" alt="GDG Karunya" onerror="document.getElementById('ew2').outerHTML='<div class=\'exp-logo-ph-lg\'>G</div>';"></div><div><div class="exp-co-name">GDG On Campus · Karunya</div><div class="exp-co-role">Media &amp; Content Production Lead</div></div></div>
+        <div class="exp-co-row"><div class="exp-logo-wrap" id="ew2"><img src="assets/logos/image_f2da29.jpg" alt="GDG Karunya" onerror="document.getElementById('ew2').outerHTML='<div class=\'exp-logo-ph-lg\'>G</div>';"></div><div><div class="exp-co-name">GDG On Campus · Karunya</div><div class="exp-co-role">Media &amp; Content Production Lead</div></div></div>
         <p class="exp-desc">Core leadership governing visual asset architectures, cross-platform media production, and brand layouts across community-wide developer interactions.</p>
         <div class="exp-chips-lg"><span class="exp-chip-lg">Asset Strategy</span><span class="exp-chip-lg">Media Systems</span><span class="exp-chip-lg">Google Developer Groups</span></div>
       </div>
@@ -1536,7 +1543,7 @@ var PROJECTS={
   rj:{
     num:'01',badge:'Voice AI · Personal Assistant · Core System Built',title:'RJ — Personal AI Assistant',
     heroDesc:'RJ is my personal AI assistant built to interact with my system through voice, automate everyday tasks, maintain persistent memory, and provide an always-on intelligent interface.',
-    coverImage:'assets/projects/rj_showcase.png',coverBg:'linear-gradient(140deg,#111318,#20242c)',coverIcon:'🎙️',
+    coverImage:'assets/projects/rj_cover.jpg',coverBg:'linear-gradient(140deg,#111318,#20242c)',coverIcon:'🎙️',
     meta:[{k:'Type',v:'Personal Voice AI System'},{k:'Status',v:'Core System Built · Active Dev'},{k:'Stack',v:'Python + Groq + WebSockets'},{k:'Interface',v:'Voice & Live HUD'}],
     metrics:[{n:'Always-On',l:'Background Daemon'},{n:'<300ms',l:'Voice Stream Latency'},{n:'100%',l:'PC Automation'},{n:'Persistent',l:'Memory & Context'}],
     sections:[
@@ -1857,6 +1864,9 @@ function runContactAnimations(){
   if(sb){sb.addEventListener('mousemove',function(e){var r=this.getBoundingClientRect();gsap.to(this,{x:(e.clientX-r.left-r.width/2)*.16,y:(e.clientY-r.top-r.height/2)*.16,duration:.3,ease:'power2.out'});});sb.addEventListener('mouseleave',function(){gsap.to(this,{x:0,y:0,duration:.55,ease:'elastic.out(1,.45)'});});}
   document.getElementById('ctContactForm')&&document.getElementById('ctContactForm').addEventListener('submit',function(e){
     e.preventDefault();var name=document.getElementById('ctName').value.trim(),email=document.getElementById('ctEmail').value.trim(),msg=document.getElementById('ctMsg').value.trim();if(!name||!email||!msg)return;
+    var subject='Portfolio message from '+name;
+    var body='Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+msg;
+    window.location.href='mailto:allanpaulraj2020@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     var form=this;gsap.to(form,{opacity:0,y:-10,duration:.3,ease:'power2.in',onComplete:function(){form.style.display='none';var s=document.getElementById('ctFormSuccess');s.style.display='block';gsap.fromTo(s,{opacity:0,y:12},{opacity:1,y:0,duration:.5,ease:'power3.out'});}});
   });
   var cur=document.getElementById('cursor');
